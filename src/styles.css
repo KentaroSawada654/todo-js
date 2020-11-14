@@ -74,12 +74,13 @@ ul {
 }
 .list-row {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 10px;
 }
 .list-row .name {
-  margin: 0 10px 0 0;
+  margin: 0 auto 0 0;
 }
 .list-row button {
-  margin-right: 10px;
+  margin-left: 10px;
 }
