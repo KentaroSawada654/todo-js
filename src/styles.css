@@ -1,0 +1,85 @@
+body {
+  font-family: sans-serif;
+  padding: 15px;
+}
+
+input {
+  margin-right: 10px;
+  border-radius: 5px;
+  height: 35px;
+  border: 1px solid #333;
+  padding: 0 10px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #333;
+  height: 35px;
+  padding: 0 15px;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+button:hover {
+  color: #fff;
+  background: #333;
+}
+
+.title {
+  margin: 5px 0 15px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  border-bottom: 1px solid #333;
+}
+
+.input-area {
+  display: flex;
+  text-align: right;
+  background: #f1f1f1;
+  max-width: 400px;
+  padding: 15px;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid #333;
+  border-bottom: none;
+}
+
+.incomplete-area {
+  background: #fff;
+  max-width: 400px;
+  min-height: 200px;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 0 0 5px 5px;
+  border: 1px solid #333;
+}
+
+.complete-area {
+  background: #f1f1f1;
+  max-width: 400px;
+  min-height: 200px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #333;
+}
+
+ul {
+  padding-left: 0;
+}
+.list-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.list-row .name {
+  margin: 0 10px 0 0;
+}
+.list-row button {
+  margin-right: 10px;
+}
