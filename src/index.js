@@ -19,7 +19,29 @@ const onClickAdd = () => {
   completeButton.innerText = "完了";
   //イベントの設定
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    //押された完了ボタンの親タグ(li)を未完了リストから削除
+    deleteFromIncompleteList(completeButton.parentNode);
+    //完了リストに追加する要素
+    const addTarget = completeButton.parentNode;
+
+    //TODO内容テキストを取得
+    const text = addTarget.firstElementChild.innerText; //一番最初の子要素の名前を取得できる。
+
+    //li以下を初期化
+    addTarget.textContent = null;
+
+    const addP = document.createElement("p");
+    addP.className = "name";
+    addP.innerText = text;
+
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+
+    addTarget.appendChild(addP);
+    addTarget.appendChild(backButton);
+
+    //完了リストに追加
+    document.getElementById("complete-list").appendChild(addTarget);
   });
 
   //button（削除）タグを生成（この時点でイベントも付けちゃう）
@@ -27,9 +49,8 @@ const onClickAdd = () => {
   deleteButton.innerText = "削除";
   //イベントの設定
   deleteButton.addEventListener("click", () => {
-    //押された削除ボタンの親タグ(li)を完了リストから削除
-    const deleteTarget = deleteButton.parentNode;
-    document.getElementById("incomplete-list").removeChild(deleteTarget);
+    //押された削除ボタンの親タグ(li)を未完了リストから削除
+    deleteFromIncompleteList(deleteButton.parentNode);
   });
 
   //liタグの子要素にpタグを追加
@@ -41,6 +62,12 @@ const onClickAdd = () => {
 
   //元からあるulにliタグを追加
   document.getElementById("incomplete-list").appendChild(li);
+};
+
+//未完了リストから指定の要素を削除
+const deleteFromIncompleteList = (target) => {
+  //対象を受け取ってそれを未完了リストから削除する。
+  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document.getElementById("add-button").addEventListener("click", () => {
