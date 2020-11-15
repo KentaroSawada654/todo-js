@@ -2,7 +2,17 @@ const onClickAdd = () => {
   //テキストボックスの値を取得し、初期化する
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
+  createIncompleteList(inputText);
+};
 
+//未完了リストから指定の要素を削除
+const deleteFromIncompleteList = (target) => {
+  //対象を受け取ってそれを未完了リストから削除する。
+  document.getElementById("incomplete-list").removeChild(target);
+};
+
+//未完了リストに追加する関数
+const createIncompleteList = (text) => {
   //liタグの生成
   const li = document.createElement("li"); //liタグ作成
   li.className = "list-row"; //クラスをつける
@@ -12,7 +22,7 @@ const onClickAdd = () => {
   p.className = "name";
 
   //入力した文字を設定
-  p.innerText = inputText;
+  p.innerText = text;
 
   //button（完了）タグを生成（この時点でイベントも付けちゃう）
   const completeButton = document.createElement("button");
@@ -34,8 +44,18 @@ const onClickAdd = () => {
     addP.className = "name";
     addP.innerText = text;
 
+    //戻すボタン作成
     const backButton = document.createElement("button");
     backButton.innerText = "戻す";
+    backButton.addEventListener("click", () => {
+      //押された戻るボタンの親タグを完了リストから削除する。
+      const deleteTarget = backButton.parentNode;
+      document.getElementById("complete-list").removeChild(deleteTarget);
+
+      //テキストを取得
+      const text = backButton.parentNode.firstElementChild.innerText;
+      createIncompleteList(text);
+    });
 
     addTarget.appendChild(addP);
     addTarget.appendChild(backButton);
@@ -62,12 +82,6 @@ const onClickAdd = () => {
 
   //元からあるulにliタグを追加
   document.getElementById("incomplete-list").appendChild(li);
-};
-
-//未完了リストから指定の要素を削除
-const deleteFromIncompleteList = (target) => {
-  //対象を受け取ってそれを未完了リストから削除する。
-  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document.getElementById("add-button").addEventListener("click", () => {
